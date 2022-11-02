@@ -17,7 +17,7 @@ defmodule ImageCropperWeb.Router do
   scope "/", ImageCropperWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/", ImageController
   end
 
   # Other scopes may use custom stacks.
