@@ -17,10 +17,10 @@ defmodule ImageCropperWeb.ImageController do
 
       image_buffer = File.read!(path)
 
-      image_b64 =
-        image_buffer
-        |> ImageCropper.crop_and_grayscale(x, y, width, height)
-        |> Base.encode64()
+      {:ok, image} =
+        ImageCropper.crop_and_grayscale(image_buffer, x, y, width, height) |> IO.inspect()
+
+      image_b64 = Base.encode64(image)
 
       render(conn, "show.html", image_src: "data:image/png;base64,#{image_b64}")
     else
