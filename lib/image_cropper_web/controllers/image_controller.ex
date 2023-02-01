@@ -17,8 +17,7 @@ defmodule ImageCropperWeb.ImageController do
 
       image_buffer = File.read!(path)
 
-      {:ok, image} =
-        ImageCropper.crop_and_grayscale(image_buffer, x, y, width, height) |> IO.inspect()
+      {:ok, image} = ImageCropper.crop_and_grayscale(image_buffer, x, y, width, height)
 
       image_b64 = Base.encode64(image)
 
